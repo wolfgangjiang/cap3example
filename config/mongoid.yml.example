@@ -1,0 +1,13 @@
+development:
+  sessions:
+    default:
+      database: cap3example_dev
+      hosts:
+        - localhost:27017
+
+test:
+  sessions:
+    default:
+      database: cap3example_dev
+      hosts:
+        - localhost:27017
