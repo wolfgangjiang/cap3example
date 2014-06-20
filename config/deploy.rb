@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'cap3example'
-set :repo_url, 'git@git.my-repo.com:cap3example.git'
+set :repo_url, 'https://github.com/wolfgangjiang/cap3example.git'
 set :use_sudo, false
 set :deploy_timestamped, true
 set :release_name, Time.now.localtime.strftime("%Y%m%d%H%M%S")
@@ -75,5 +75,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
