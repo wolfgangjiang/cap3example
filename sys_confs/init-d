@@ -1,0 +1,43 @@
+#!/bin/sh
+set -e
+# Example init script, this can be used with nginx, too,
+# since nginx and unicorn accept the same signals
+
+# Feel free to change any of the following variables for your app:
+TIMEOUT=${TIMEOUT-60}
+APP_ROOT=/srv/cap3example/current
+PID=$APP_ROOT/tmp/pids/unicorn.pid
+ENVIRONMENT=production
+APP_USER=edoctor
+CMD="/home/edoctor/.rvm/bin/rvm 2.0.0 do bundle exec unicorn_rails -E $ENVIRONMENT -D -c $APP_ROOT/config/unicorn.rb"
+action="$1"
+set -u
+
+cd $APP_ROOT || exit 1
+
+sig () {
+  test -s "$PID" && kill -$1 `cat $PID`
+}
+
+case $action in
+start)
+  sig 0 && echo >&2 "Already running" && exit 0
+  su $APP_USER -c "$CMD"
+  ;;
+stop)
+  sig QUIT && exit 0
+  echo >&2 "Not running"
+  ;;
+force-stop)
+  sig TERM && exit 0
+  echo >&2 "Not running"
+  ;;
+restart|reload)
+  sig QUIT
+  su $APP_USER -c "$CMD"
+  ;;
+*)
+  echo >&2 "Usage: $0 <start|stop|restart|upgrade|force-stop|reopen-logs>"
+  exit 1
+  ;;
+esac

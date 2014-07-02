@@ -6,7 +6,7 @@ set :branch, "master"
 set :user, "edoctor"
 set :deploy_to, "/srv/#{fetch(:application)}"
 
-server "192.168.5.163", user: "edoctor", roles: %w{web app db}
+server "192.168.5.158", user: "edoctor", roles: %w{web app db}
 
 # Simple Role Syntax
 # ==================
