@@ -9,7 +9,7 @@ set :release_name, Time.now.localtime.strftime("%Y%m%d%H%M%S")
 set :keep_releases, 5
 set :rvm_ruby_version, "2.0.0"
 
-set :linked_files, %w{.ruby-version .ruby-gemset config/mongoid.yml config/unicorn.rb}
+set :linked_files, %w{.ruby-version .ruby-gemset config/mongoid.yml config/unicorn.rb config/secrets.yml}
 
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets public/system}
 
