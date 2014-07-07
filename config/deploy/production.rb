@@ -3,10 +3,10 @@ set :stage, :production
 set :rails_env, "production"
 set :application, "cap3example"
 set :branch, "master"
-set :user, "edoctor"
+set :user, "wolfgang"
 set :deploy_to, "/srv/#{fetch(:application)}"
 
-server "192.168.5.158", user: "edoctor", roles: %w{web app db}
+server "192.168.5.158", user: "wolfgang", roles: %w{web app db}
 
 # Simple Role Syntax
 # ==================
@@ -24,8 +24,6 @@ server "192.168.5.158", user: "edoctor", roles: %w{web app db}
 # This can be used to drop a more detailed server definition into the
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
-
-# server '192.168.5.163', user: 'edoctor', roles: %w{web app}
 
 
 # Custom SSH Options
